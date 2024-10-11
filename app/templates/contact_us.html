@@ -1,0 +1,85 @@
+{% include 'header.html' %}
+{% load static %}
+
+<div class="page-content bg-white">
+		
+	<!--banner-->
+	<div class="contact-bnr" style="background-image: url({% static 'images/bg9.png' %});">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+
+					<div class="contact-info style-1 text-start text-white">
+						<h2 class="title wow fadeInUp" data-wow-delay="0.1s">DISCOVER US</h2>
+						<p class="text wow fadeInUp" data-wow-delay="0.2s"><span class="text-decoration-underline text-white"><a class="text-white" href="javascript:void(0)">Pankaj Pasi is here to help you;</a></span> <br> He is available to answer any questions you might have.</p>
+						<div class="contact-bottom wow fadeInUp" data-wow-delay="0.3s">
+							<div class="contact-left">
+								<h3>Call Us</h3>
+								<ul>
+									<li><a href="tel:+917048660327">+91704 866 0327</a></li>
+									<li><a href="tel:+918160964128">+91816 096 4128</a></li>
+								</ul>
+							</div>
+							<div class="contact-right">
+								<h3>Email Us </h3>
+								<ul> 
+									<li>calitalks.in@gmail.com</li>
+								</ul>
+							</div>		
+						</div>
+					</div>
+				</div>
+				<!-- your_template.html -->
+				<div class="col-lg-6">
+					<div class="contact-area1 style-1 m-r20 m-md-r0 wow fadeInUp" data-wow-delay="0.5s">
+						{% if form.is_valid %}
+						<div class="alert alert-success" role="alert">
+							Your message has been sent successfully!
+						</div>
+						{% endif %}
+						<form class="dz-form" method="POST" id="contactForm" action="{% url 'contact-us' %}">
+							{% csrf_token %}
+							<input type="hidden" class="form-control" name="dzToDo" value="Contact">
+							<input type="hidden" class="form-control" name="reCaptchaEnable" value="0">
+							<div class="dzFormMsg"></div>
+							<label class="form-label">Your Name</label>
+							<div class="input-group">
+								{{ form.name }}
+							</div>
+							{% if form.name.errors %}
+								<span class="text-danger">{{ form.name.errors }}</span>
+							{% endif %}
+							<label class="form-label">Email Address</label>
+							<div class="input-group">
+								{{ form.email }}
+							</div>
+							{% if form.email.errors %}
+								<span class="text-danger">{{ form.email.errors }}</span>
+							{% endif %}
+							<label class="form-label">Phone Number</label>
+							<div class="input-group">
+								{{ form.phone_number }}
+							</div>
+							{% if form.phone_number.errors %}
+								<span class="text-danger">{{ form.phone_number.errors }}</span>
+							{% endif %}
+							<label class="form-label">Message</label>
+							<div class="input-group m-b30">
+								{{ form.message }}
+							</div>
+							{% if form.message.errors %}
+								<span class="text-danger">{{ form.message.errors }}</span>
+							{% endif %}
+							<div>
+								<button name="contactformsubit" type="submit" value="submit" class="btn btn-primary w-100">SUBMIT</button>
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+{% include 'footer.html' %}

@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html><html lang="en"><head>
+	<!-- Title -->
+	<title>Pankaj Pasi - Calisthenic Athletes </title>
+	
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="author" content="DexignZone">
+	<meta name="robots" content="index, follow">
+	<meta name="keywords" content="bodybuilding, class, clean, coach, fitness, fitness gym, gym, gym trainer, health, martial arts, personal trainer, sport, sports theme, training, workout, Fitness, Workout design, Health and wellness, Exercise layout, Workout routines, Calisthenic, Calisthenic Park, Bodyweight">
+	<meta name="description" content="Transform Your Body with with Pankaj Pasi. Start your Trainings">
+	<meta property="og:title" content="Calitalks - Personal Calisthenic Coach">
+	<meta property="og:description" content="Transform Your Body with with Pankaj Pasi. Start your Trainings">
+	<meta property="og:image" content="images/social-image.png">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="twitter:title" content="Calitalks - Personal Calisthenic Coach">
+	<meta name="twitter:description" content="Transform Your Body with with Pankaj Pasi. Start your Trainings">
+	<meta name="twitter:card" content="summary_large_image">
+	
+	<!-- Mobile Specific -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Favicon icon -->
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    
+	<!-- Stylesheet -->
+	<link href="{% static 'css/animate.css' %}" rel="stylesheet">
+	<link href="{% static 'css/swiper-bundle.min.css' %}" rel="stylesheet">
+	<link href="{% static 'css/splitting.css' %}" rel="stylesheet">
+	<link href="{% static 'css/magnific-popup.min.css' %}" rel="stylesheet">
+	<link href="{% static 'css/bootstrap-select.min.css' %}" rel="stylesheet">
+	<link href="{% static 'css/rangeslider.css' %}" rel="stylesheet">
+	<link href="{% static 'css/lightgallery.css' %}" rel="stylesheet">
+    <link href="{% static 'css/switcher.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lg-thumbnail.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lg-zoom.css' %}" rel="stylesheet">
+    <link href="{% static 'css/test_css.css' %}" rel="stylesheet">
+
+	<!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link class="skin" rel="stylesheet" href="{% static 'css/skin-1.css' %}">
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+
+    <style>
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio (height: 9/16) */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body id="bg" class="data-typography-1">
+<div id="loading-area-2" class="loading-page-2">
+	<div class="loading-inner">
+		<div class="loader"></div>
+		<div class="loder-section left-section"></div>
+		<div class="loder-section right-section"></div>
+	</div>
+</div>
+<div class="page-wraper">
+
+    <!-- Header -->
+        <header class="site-header mo-left header style-1">
+            <!-- Main Header -->
+            <div class="sticky-header main-bar-wraper navbar-expand-lg">
+                <div class="main-bar clearfix">
+                    <div class="container-fluid clearfix">
+                        <div class="clearfix">
+                            <!-- Website Logo -->
+                            <div class="logo-header mostion logo-dark">
+                                <a href="/"></a>
+                            </div>
+                            
+                            <!-- Nav Toggle Button -->
+                            <button class="navbar-toggler navbar-toggler-skew collapsed navicon justify-content-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                            
+                            <!-- Header Nav -->
+                            <div class="header-nav navbar-collapse collapse justify-content-center" id="navbarNavDropdown">
+                                <div class="logo-header logo-dark">
+                                    <a href=""></a>
+                                </div>
+                                <ul class="nav navbar-nav navbar navbar-left">	
+                                    <li><a href="/">Home</a>
+                                    </li>
+                                    <li><a href="{% url 'event-list' %}">Events</a>
+                                    </li>
+                                    <li><a href="{% url 'program-list' %}">Programs</a>
+                                    </li>
+                                    <li><a href="{% url 'videos' %}">Videos</a>
+                                    </li>
+                                    <li><a href="{% url 'about-me' %}">About Me</a>
+                                    </li>
+                                    <li><a href="{% url 'contact-us' %}">Contact Us</a>
+                                    </li>
+                                </ul>
+                                <div class="dz-social-icon">
+                                    <ul>									
+                                        <li>
+                                            <a target="_blank" href="https://www.facebook.com/pankaj.pasi.750">
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://www.instagram.com/calitalks.in/">
+                                                <i class="fab fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://www.youtube.com/@Calitalks">
+                                                <i class="fab fa-youtube"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>	
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Main Header End -->
+        </header>
+        <!-- Header -->

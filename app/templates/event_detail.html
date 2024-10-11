@@ -1,0 +1,153 @@
+{% include 'header.html' %}
+{% load static %}
+	
+	<div class="page-content bg-white">
+		<!-- Our Event Detail -->
+		<section class="content-inner">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="event-single">
+							<div class="dz-media wow fadeInUp" data-wow-delay="0.4s">
+								<img src="{{ current_event.banner_photo.url }}" alt="/">
+							</div>
+							<div class="dz-info">
+								<h1 class="dz-title wow fadeInUp" data-wow-delay="0.6s">{{ current_event.event_name }}</h1>
+									{{ current_event.description|safe }}
+
+							</div>
+							<section class="gallery">
+								<div class="row">
+									{% for image in current_event.other_photos.all %}
+									<div class="col-xl-6 col-lg-6">
+										<div class="fluid-container">
+											<div class="item">
+												<div class="img">
+													<img src="{{ image.photo.url}}">
+												</div>
+												<div class="info"><span class="title"></span>
+												</div>
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+								</div>
+							</section>
+							<div class="overlay">
+								<div class="viewer">
+									<div>
+										<div class="alt">this image is ... </div>
+										<button class="close"><span class="material-symbols-rounded">close</span></button>
+									</div>
+									<div><img></div>
+								</div>
+							</div>
+							{% if current_event.youtube_video_url.all %}
+							<!-- <p> exists {{current_event.youtube_video_url.all}} </p> -->
+							<div class="dz-media">
+									{% for youtube_video in current_event.youtube_video_url.all %}
+										<iframe width="100%" height="315" src="{{ youtube_video.url }}" frameborder="0" allowfullscreen></iframe>
+									{% endfor %}
+							</div>
+							{% endif %}
+							{% if current_event.video_file %}
+							<div class="video-container">
+								<video controls>
+									<source src="{{ current_event.video_file.url }}" type="video/mp4">
+									Your browser does not support the video tag.
+								</video>
+							</div>
+							{% endif %}
+						</div>
+					</div>
+					<div class="col-lg-4 ">
+						<aside class="side-bar sticky-top">
+							<h3 class="sidebar-title wow fadeInUp" data-wow-delay="0.4s">Event Details</h3>
+							<div class="cart-sidebar">
+								<div class="cart-detail m-b30 wow fadeInUp" data-wow-delay="0.6s">
+									<table>
+										<tbody>
+											<tr>
+												<td>
+													<h6 class="mb-0">Date</h6>
+												</td>
+												<td class="price">
+													{{ current_event.event_date|date:"d F Y" }}
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<h6 class="mb-0">Event Title</h6>
+												</td>
+												<td class="price">
+													{{ current_event.event_title }}
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<h6 class="mb-0">Duration</h6>
+												</td>
+												<td class="price">
+													{{ current_event.duration }}
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<h6 class="mb-0">Time</h6>
+												</td>
+												<td class="price">
+													{{ current_event.start_time|time:"h:i A" }} - {{ current_event.end_time|time:"h:i A" }}
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<h6 class="mb-0">Location</h6>
+												</td>
+												<td class="price">
+													{{ current_event.location }}
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</aside>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="content-inner pt-0">
+			<div class="container">
+				<div class="row">
+					{% for event in event_list %}
+					<h4 class="title font-weight-700 m-b30">Related Events</h4>
+
+					<div class="col-xl-6 col-lg-8">
+						<div class="dz-card style-1 blog-half m-b30 overlay-shine wow fadeInUp" data-wow-delay="0.1s">
+							<div class="dz-media">
+								<a><img src="{{ current_event.heading_photo.url }}" alt="/"></a>
+							</div>
+							<div class="dz-info">
+								<div class="dz-meta">
+									<ul>
+										<li class="dz-date">
+											<span>{{ event.event_date|date:"d" }}</span> {{ event.event_date|date:"M" }}
+										</li>
+										<li class="dz-time">
+											<a> {{ event.start_time|time:"h:i A" }} - {{ event.end_time|time:"h:i A" }} </a>
+										</li>
+									</ul>
+								</div> 
+								<h4 class="dz-title"><a href="{% url 'event-detail' pk=event.pk %}">{{ event.name}}</a></h4>
+								<p> {{ event.description |truncatechars:80}} </p>
+								<a class="read-btn btn-link" href="{% url 'event-detail' pk=event.pk %}">Read More</a>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<!-- Our Event Detail -->
+	
+{% include 'footer.html' %}

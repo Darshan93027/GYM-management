@@ -1,0 +1,77 @@
+{% include 'header.html' %}
+{% load static %}
+	
+	<div class="page-content bg-white">
+		
+		<!-- Banner  -->
+		<div class="dz-bnr-inr style-2" style="background-image: url({% static 'images/main_banner.jpg' %})">
+			<div class="banner-gradient"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="dz-bnr-inr-entry">
+							<h1>Programs</h1>
+							<!-- Breadcrumb Row -->
+							<nav aria-label="breadcrumb" class="breadcrumb-row">
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="/">Home</a></li>
+									<li class="breadcrumb-item active"><a href="{{ view_url }}"></a>Programs</li>
+								</ul>
+							</nav>
+							<!-- Breadcrumb Row End -->
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+		<!-- Banner End -->
+		
+		<!-- Our Events -->
+		<section class="content-inner">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row justify-content-center">
+							{% for program in programs %}
+							<div class="col-xl-6 col-lg-8">
+								<div class="dz-card style-1 blog-half m-b30 overlay-shine wow fadeInUp" data-wow-delay="0.1s">
+									<div class="dz-media">
+										<a><img src="{{ program.heading_photo.url }}" alt="/"></a>
+									</div>
+									<div class="dz-info">
+										<h4 class="dz-title"><a href="{% url 'program-detail' pk=program.pk %}">{{ program.name}}</a></h4>
+										<p> {{ program.heading_text|truncatechars:80 }} </p>
+										<a class="read-btn btn-link" href="{% url 'program-detail' pk=program.pk %}">Read More</a>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+						<div class="col-lg-12 m-b50">
+							<nav>
+								<ul class="pagination pagination-gutter pagination-primary no-bg m-b15">
+									{% if page_obj.has_previous %}
+										<li class="page-item"><a class="page-link prev" href="?page=1">First</a></li>
+										<li class="page-item"><a class="page-link prev" href="?page={{ page_obj.previous_page_number }}">Prev</a></li>
+									{% endif %}
+									{% for num in page_obj.paginator.page_range %}
+										{% if num == page_obj.number %}
+											<li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+										{% elif num in page_obj.paginator.page_range|slice:":3" or num in page_obj.paginator.page_range|slice:"-3:" %}
+											<li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+										{% endif %}
+									{% endfor %}
+									{% if page_obj.has_next %}
+										<li class="page-item"><a class="page-link next" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+										<li class="page-item"><a class="page-link next" href="?page={{ page_obj.paginator.num_pages }}">Last</a></li>
+									{% endif %}
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Our Events -->
+
+		{% include 'footer.html' %}

@@ -1,0 +1,49 @@
+{% include 'header.html' %}
+{% load static %}
+	
+	<div class="page-content bg-white">
+		
+		<!-- Banner  -->
+		<div class="dz-bnr-inr style-2" style="background-image: url({% static 'images/main_banner.jpg' %})">
+			<div class="banner-gradient"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="dz-bnr-inr-entry">
+							<h1>Videos</h1>
+							<!-- Breadcrumb Row -->
+							<nav aria-label="breadcrumb" class="breadcrumb-row">
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="/">Home</a></li>
+									<li class="breadcrumb-item active"><a href="{{ view_url }}"></a>Videos</li>
+								</ul>
+							</nav>
+							<!-- Breadcrumb Row End -->
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+		<!-- Banner End -->
+		
+		<!-- Our Events -->
+		<section class="content-inner">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row justify-content-center">
+							{% for video in videos %}
+							<div class="col-xl-6 col-lg-8">
+								<div class="dz-media">
+									<iframe width="100%" height="315" src="{{ video.url }}" frameborder="0" allowfullscreen></iframe>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Our Events -->
+
+		{% include 'footer.html' %}
